@@ -8,7 +8,7 @@ import AuthProvider from "./context/AuthContext";
 import RootLayout from "./Layouts/RootLayout";
 import DeveloperLayout from "./Layouts/DeveloperLayout";
 
-import About from "./components/homepages/About";
+
 import Home from "./Developer/Home";
 
 const router = createBrowserRouter(
@@ -16,7 +16,6 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
 
       <Route index element={<Homepage />}  />
-      <Route path="about" element={<About />}  />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
 
