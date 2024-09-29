@@ -1,0 +1,17 @@
+{
+  "name": "pict-hackathon",
+  "version": "1.0.0",
+  "description": "Frontend - npm run dev Server - npm start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server && npm i && npm run dev",
+    "client": "cd client && npm i && npm run dev",
+    "dev": "concurrently -k \"npm run server\" \"npm run client\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
