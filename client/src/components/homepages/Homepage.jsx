@@ -12,7 +12,6 @@ const MainPage = () => {
           <h1 className="text-3xl font-bold">Developer's Dashboard</h1>
           <nav>
             <ul className="flex space-x-4">
-              {/* Use NavLink instead of a */}
               <li>
                 <NavLink 
                   to="/" 
@@ -55,7 +54,7 @@ const MainPage = () => {
           </p>
         </section>
 
-        {/* Update the grid layout to 2 cards per row */}
+
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 pt-12">
           <ButtonCard title="Create Documentation" description="Generate detailed and structured documentation automatically." path="/create-documentation" />
           <ButtonCard title="Generate Summary" description="Summarize your code files and project insights." path="/generate-summary" />
@@ -78,7 +77,7 @@ const ButtonCard = ({ title, description, path }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(path); // Navigate to the provided path
+    navigate(path); 
   };
 
   return (
