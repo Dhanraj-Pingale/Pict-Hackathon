@@ -1,38 +1,62 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 const MainPage = () => {
-
   const navigate = useNavigate(); 
 
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
       {/* Header Section */}
-      <header className="bg-gray-800 py-4 shadow-lg">
+      <header className="bg-gray-800 py-3 shadow-lg">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-4xl font-bold">Developer's Dashboard</h1>
+          <h1 className="text-3xl font-bold">Developer's Dashboard</h1>
           <nav>
-            <ul className="flex space-x-6">
-              <li><a href="#" className="hover:text-gray-400">Home</a></li>
-              <li><a href="#" className="hover:text-gray-400">Features</a></li>
-              <li><a href="#" className="hover:text-gray-400">About</a></li>
-              <li><a href="#" className="hover:text-gray-400">Contact</a></li>
+            <ul className="flex space-x-4">
+              {/* Use NavLink instead of a */}
+              <li>
+                <NavLink 
+                  to="/" 
+                  className={({ isActive }) => (isActive ? "text-gray-400" : "hover:text-gray-400")}>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/features" 
+                  className={({ isActive }) => (isActive ? "text-gray-400" : "hover:text-gray-400")}>
+                  Features
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/about" 
+                  className={({ isActive }) => (isActive ? "text-gray-400" : "hover:text-gray-400")}>
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/contact" 
+                  className={({ isActive }) => (isActive ? "text-gray-400" : "hover:text-gray-400")}>
+                  Contact
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow container mx-auto p-8">
-        <section className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">AI-Powered Developer Tools</h2>
-          <p className="text-gray-400 text-lg md:text-xl">
+      <main className="flex-grow container mx-auto p-6">
+        <section className="text-center mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold mb-3">AI-Powered Developer Tools</h2>
+          <p className="text-gray-400 text-md md:text-lg">
             Select any AI tool designed to streamline your development process.
           </p>
         </section>
 
         {/* Update the grid layout to 2 cards per row */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 pt-12">
           <ButtonCard title="Create Documentation" description="Generate detailed and structured documentation automatically." path="/create-documentation" />
           <ButtonCard title="Generate Summary" description="Summarize your code files and project insights." path="/generate-summary" />
           <ButtonCard title="Code Visualizer" description="Visualize your code architecture and data flow." path="/code-visualizer" />
@@ -41,7 +65,7 @@ const MainPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 py-6 mt-auto">
+      <footer className="bg-gray-800 py-4 mt-auto">
         <div className="container mx-auto text-center text-gray-500">
           &copy; 2024 Developer's Dashboard. All rights reserved.
         </div>
@@ -58,9 +82,9 @@ const ButtonCard = ({ title, description, path }) => {
   };
 
   return (
-    <div className="bg-gray-700 hover:bg-gray-600 text-white p-6 rounded-lg shadow-lg transition transform hover:-translate-y-1 duration-300">
-      <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-300 mb-4">{description}</p>
+    <div className="bg-gray-700 hover:bg-gray-600 text-white p-4 rounded-lg shadow-lg transition transform hover:-translate-y-1 duration-300">
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-300 mb-3 text-sm">{description}</p>
       <button
         onClick={handleClick}
         className="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-2 px-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-300"
