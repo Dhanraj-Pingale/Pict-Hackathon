@@ -6,14 +6,27 @@ import passport from "passport";
 import LocalStrategy from "passport-local";
 import bcrypt from "bcryptjs";
 import session from "express-session";
-
+import authRoutes from "./Routes/authRoutes.js";
+import dbRoutes from "./Routes/dbRoutes.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true, // ! important.. Allows cookies to be sent
+  methods: ["GET", "POST", "DELETE", "PATCH"], // add multiple if needed
+};
+
+// Enable CORS for all origins or specify a particular origin
+app.use(cors(corsOptions));
+
 app.use(express.json()); // To handle JSON bodies
-app.use(cors()); // Enable CORS for cross-origin requests
+app.use(express.static('public'));
 
 const uri = process.env.MONGO_URI; // Use environment variable for MongoDB URI
+
 
 // Setup express-session with 1 day expiry (24 hours)
 app.use(
@@ -21,6 +34,7 @@ app.use(
     secret: process.env.SESSION_SECRET || "secret", // Use an environment variable for session secret
     resave: false,
     saveUninitialized: false,
+   
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // Session expires in 1 day
       httpOnly: true, // Helps prevent XSS attacks
@@ -31,6 +45,12 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Use auth routes (only for Authentication)
+app.use("/auth", authRoutes);
+
+// for database handling... 
+app.use("/db", dbRoutes);
 
 // MongoDB connection and Passport configuration
 async function main() {
@@ -156,7 +176,18 @@ async function main() {
 }
 
 // Start the server and connect to MongoDB
-app.listen(3000, async () => {
-  console.log("Server is running on port 3000");
+app.listen(PORT, async () => {
+  console.log(`Server running on port ${PORT}`);
   await main(); // Call the main function to connect to MongoDB
+});
+
+// handle server shutdown
+process.on("SIGINT", async () => {
+  const db = getDb();
+  console.log("Shutting down Database connection...");
+
+  if (db && db.client) {
+    await db.client.close();
+  }
+  process.exit(0);
 });
