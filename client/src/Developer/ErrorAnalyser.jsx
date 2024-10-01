@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getResponseGemini } from '../../Routes/Gemini';
+import CodeBlock from '../components/CodeBlock';
 
 export default function ErrorAnalyser() {
   const [codeInput, setCodeInput] = useState('');
@@ -7,16 +9,12 @@ export default function ErrorAnalyser() {
   const handleCodeAnalysis = async () => {
     try {
       // Replace this with your Gemini API logic
-      const response = await fetch('https://your-gemini-api.com/analyze', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code: codeInput }),
-      });
+      const response = await getResponseGemini({prompt: `${codeInput} Analyse the errors in above code, and only give me the corrected code with comments, without any other description`});
 
-      const data = await response.json();
-      setCorrectedCode(data.correctedCode);
+      console.log("res: ", response);
+
+      setCorrectedCode(response);
+
     } catch (error) {
       console.error('Error analyzing code:', error);
       setCorrectedCode('Error in analyzing code');
@@ -45,7 +43,8 @@ export default function ErrorAnalyser() {
       <div className="flex flex-col bg-white p-4 rounded-lg shadow-lg">
         <h2 className="text-lg font-semibold mb-2">Corrected Code</h2>
         <pre className="flex-1 bg-gray-900 text-white p-4 rounded-md overflow-auto">
-          {correctedCode || 'Corrected code will appear here...'}
+          {/* {correctedCode || 'Corrected code will appear here...'} */}
+          <CodeBlock code={correctedCode}/>
         </pre>
       </div>
     </div>

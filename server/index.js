@@ -8,6 +8,7 @@ import bcrypt from "bcryptjs";
 import session from "express-session";
 import authRoutes from "./Routes/authRoutes.js";
 import dbRoutes from "./Routes/dbRoutes.js";
+import geminiRoutes from "./Routes/gemini.js";
 dotenv.config();
 
 const app = express();
@@ -51,6 +52,9 @@ app.use("/auth", authRoutes);
 
 // for database handling... 
 app.use("/db", dbRoutes);
+
+//for gemini handling...
+app.use("/gemini", geminiRoutes);
 
 // MongoDB connection and Passport configuration
 async function main() {
@@ -183,11 +187,11 @@ app.listen(PORT, async () => {
 
 // handle server shutdown
 process.on("SIGINT", async () => {
-  const db = getDb();
-  console.log("Shutting down Database connection...");
+  // const db = getDb();
+  // console.log("Shutting down Database connection...");
 
-  if (db && db.client) {
-    await db.client.close();
-  }
+  // if (db && db.client) {
+  //   await db.client.close();
+  // }
   process.exit(0);
 });
