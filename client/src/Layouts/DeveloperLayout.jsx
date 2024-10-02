@@ -9,7 +9,7 @@ export default function DeveloperLayout() {
             <div className="developer-layout">
                 <header>
                     <nav>
-                        <h1>DeveloperLayout.. Remove this later</h1>
+                     {/*<h1>DeveloperLayout.. Remove this later</h1>*/}
 
                      
                     </nav>

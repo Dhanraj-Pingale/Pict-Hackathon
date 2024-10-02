@@ -10,6 +10,7 @@ import DeveloperLayout from "./Layouts/DeveloperLayout";
 
 import About from "./components/homepages/About";
 import Home from "./Developer/Home";
+import DocumentationPage from "./Developer/Documentation/DocumenationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="developer" element={<DeveloperLayout />}>
 
         <Route index element={<ProtectedRoute child={<Home />} />} />
-        <Route path="documentation" element={<ProtectedRoute child={<div>document</div>} />} />
+        <Route path="documentation" element={<DocumentationPage/>} />
       </Route>
       {/* <Route path="resetPassword" element={<ResetPassword />} /> */}
 
