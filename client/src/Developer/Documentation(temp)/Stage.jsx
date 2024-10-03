@@ -6,7 +6,6 @@ import PromptWindow from './MainComponents/PromptWindow';
 import './customScroll.css';
 import {  getResponseGemini } from '../../../Routes/Gemini';
 
-
 const MainContent = () => {
   const [showDialog, setShowDialog] = useState(false); // Manage if the dialog is open or closed
   const [activeTab, setActiveTab] = useState('Basic'); // State for tab switching
@@ -15,7 +14,7 @@ const MainContent = () => {
   const [isEditingTitle, setIsEditingTitle] = useState(false); // Whether the title is being edited
   const [showPromptWindow, setShowPromptWindow] = useState(false); // Manage PromptWindow visibility
   const [loading, setLoading] = useState(false); // Loading state for buffer animation
-  const [contentItems, setContentItems] = useState([]); // List of content added, including AI-generated content
+  const [stage, setStage] = useState([]); // List of content added, including AI-generated content
 
 
 

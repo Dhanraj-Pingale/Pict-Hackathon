@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,9 +33,11 @@ const Navbar = () => {
         </button>
 
         {/* Profile Icon */}
+        <NavLink to="profile" > 
         <button className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center">
           A
         </button>
+        </NavLink>
       </div>
     </nav>
   );

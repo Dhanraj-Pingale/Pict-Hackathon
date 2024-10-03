@@ -1,17 +1,18 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import Login from "./components/authentications/Login";
-import Register from "./components/authentications/Register";
+import Register from "./components/authentications/SignUp";
 import {ProtectedRoute, ProtectedRootRoute } from "./components/authentications/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
 
 import RootLayout from "./Layouts/RootLayout";
 import DeveloperLayout from "./Layouts/DeveloperLayout";
 
-import DocumentationPage from "./Developer/Documentation/DocumenationPage";
+import DocumentationPage from "./Developer/Documentation(temp)/DocumenationPage";
 import ErrorAnalyser from "./Developer/ErrorAnalyser";
 import CodeSummarizer from "./Developer/CodeSummarizer";
 import HomePage from "./pages/Homepage";
-import CodeVisualizer from "./pages/CodeVisualizer";
+import CodeVisualizer from "./Developer/CodeVisualizer";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +20,8 @@ const router = createBrowserRouter(
 
       <Route index element={<ProtectedRootRoute/>} />
       <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
+      <Route path="signup" element={<Register />} />
+      <Route path="profile" element={<ProfilePage />} />
 
       <Route path="developer" element={<DeveloperLayout />}>
 

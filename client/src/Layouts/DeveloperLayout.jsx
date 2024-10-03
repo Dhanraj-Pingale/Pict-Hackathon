@@ -7,14 +7,7 @@ export default function DeveloperLayout() {
     return (
         <>
             <div className="developer-layout">
-                <header>
-                    <nav>
-                     {/*<h1>DeveloperLayout.. Remove this later</h1>*/}
-
-                     
-                    </nav>
-                </header>
-
+                
                 <main>
                     <Outlet />
                 </main>
