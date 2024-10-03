@@ -1,5 +1,8 @@
 import React from 'react';
-import HomePageCard from '../components/HomePageCard';
+import HomePageCard from '../components/HomePage/HomePageCard';
+import Footer from '../components/HomePage/Footer';
+import SpericalDesigns from '../components/HomePage/SpericalDesigns';
+import Navbar from '../components/HomePage/Navbar';
 
 // const HomePage = () => {
 //   const navigate = useNavigate(); 
@@ -101,14 +104,12 @@ import HomePageCard from '../components/HomePageCard';
 const HomePage = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
 
       <div className="min-h-screen bg-customDarker text-white p-8 relative flex items-center justify-center overflow-hidden">
         
         {/* Spherical Designs */}
-        <div className="absolute w-64 h-64 bg-white opacity-10 rounded-full blur-3xl top-20 left-10"></div>
-        <div className="absolute w-96 h-96 bg-white opacity-5 rounded-full blur-3xl bottom-20 right-20"></div>
-        <div className="absolute w-72 h-72 bg-white opacity-15 rounded-full blur-2xl top-40 right-40"></div>
+        <SpericalDesigns />
 
         {/* Grid of Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -121,11 +122,7 @@ const HomePage = () => {
 
         </div>
       </div>
-      <footer className="bg-gray-800 py-4 mt-auto">
-        <div className="container mx-auto text-center text-gray-500">
-          &copy; 2024 Developer's Dashboard. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

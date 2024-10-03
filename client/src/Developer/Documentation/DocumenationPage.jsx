@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar'; // Assuming you have Navbar in the components folder
+import Navbar from '../../components/HomePage/Navbar'; // Assuming you have Navbar in the components folder
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 

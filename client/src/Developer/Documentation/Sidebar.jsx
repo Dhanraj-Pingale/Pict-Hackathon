@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaStar, FaHome, FaCode, FaChartBar, FaClipboardList, FaUndoAlt, FaPlus } from "react-icons/fa"; // FontAwesome icons
 import PromptWindow from "./MainComponents/PromptWindow"; // Assuming PromptWindow is a component to handle prompts
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const [showPrompt, setShowPrompt] = useState(false); // State to toggle prompt window
@@ -35,7 +36,16 @@ const Sidebar = () => {
       {/* Bottom section: Back to Home */}
       <div className="mt-6">
         <li className="text-lg flex items-center transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
-          <FaHome className="mr-3" size={18} /> Back to Home
+          <NavLink to="/developer" >
+            <div>
+
+              <FaHome className="mr-3" size={18} />
+              <p>
+                Back to Home
+              </p>
+            </div>
+          </NavLink>
+
         </li>
       </div>
 
