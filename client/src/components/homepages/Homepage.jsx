@@ -57,7 +57,7 @@ const MainPage = () => {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 pt-12">
           <ButtonCard title="Create Documentation" description="Generate detailed and structured documentation automatically." path="/developer/documentation" />
-          <ButtonCard title="Generate Summary" description="Summarize your code files and project insights." path="/generate-summary" />
+          <ButtonCard title="Generate Summary" description="Summarize your code files and project insights." path="/developer/codeSummarizer" />
           <ButtonCard title="Code Visualizer" description="Visualize your code architecture and data flow." path="/code-visualizer" />
           <ButtonCard title="Error Finder / Auto Completer" description="Get real-time suggestions and error fixes." path="/developer/errorAnalyser" />
         </section>
