@@ -142,12 +142,10 @@ async function main() {
           email,
           password: hashedPassword,
         });
-        res
-          .status(201)
-          .json({
-            message: "User registered successfully",
-            userId: result.insertedId,
-          });
+        res.status(201).json({
+          message: "User registered successfully",
+          userId: result.insertedId,
+        });
       } catch (error) {
         console.error("Error registering user:", error);
         res.status(500).json({ error: "Internal Server Error" });
@@ -174,6 +172,26 @@ async function main() {
         res.json({ message: "Logged out successfully" });
       });
     });
+
+    // Generate Content API route
+    app.post("/api/generate-content", async (req, res) => {
+      const { prompt } = req.body;
+      if (!prompt) {
+        return res.status(400).json({ error: "Prompt is required" });
+      }
+
+      try {
+        // Call your generateContent function here
+        const result = await generateContent(prompt);
+        res.json({ text: result });
+      } catch (error) {
+        res.status(500).json({ error: "Error generating content" });
+        console.error("Error generating content:", error);
+
+      }
+    });
+
+    console.log("API Key:", process.env.GOOGLE_API_KEY); // Log API Key for reference
   } catch (e) {
     console.error("Error connecting to MongoDB:", e);
   }

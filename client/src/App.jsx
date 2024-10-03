@@ -10,6 +10,7 @@ import DeveloperLayout from "./Layouts/DeveloperLayout";
 
 
 import Home from "./Developer/Home";
+import DocumentationPage from "./Developer/Documentation/DocumenationPage";
 import ErrorAnalyser from "./Developer/ErrorAnalyser";
 
 const router = createBrowserRouter(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="developer" element={<DeveloperLayout />}>
 
         <Route index element={<ProtectedRoute child={<Home />} />} />
-        <Route path="documentation" element={<ProtectedRoute child={<div>document</div>} />} />
+        <Route path="documentation" element={<DocumentationPage/>} />
         <Route path="errorAnalyser" element={<ProtectedRoute child={<ErrorAnalyser />} />} />
 
       </Route>
