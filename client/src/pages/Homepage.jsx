@@ -22,6 +22,7 @@ const HomePage = () => {
           <HomePageCard title='Code Visualizer' emoji='🧑‍💻' path="/developer/codeVisualizer" />
           <HomePageCard title='Error Analyser' emoji='❌' path="/developer/errorAnalyser" />
           <HomePageCard title='Code Summarizer' emoji='🧊' path="/developer/codeSummarizer" />
+          <HomePageCard title='Code Editor' emoji='🧊' path="/developer/codeEditor" />
 
         </div>
       </div>
