@@ -4,6 +4,8 @@ import DialogBox from './MainComponents/DialogBox';
 import CodeSnippet from './MainComponents/CodeSnippet'; // Import the CodeSnippet component
 import PromptWindow from './MainComponents/PromptWindow';
 import './customScroll.css';
+import {  getResponseGemini } from '../../../Routes/Gemini';
+
 
 const MainContent = () => {
   const [showDialog, setShowDialog] = useState(false); // Manage if the dialog is open or closed
@@ -38,42 +40,30 @@ const MainContent = () => {
   }, []);
 
   // Handle content generation request
-  const handleGenerateContent = async (prompt) => {
-    console.log('Received prompt:', prompt);
+  const handleGenerateContent = async (content) => {
+    console.log('Received prompt:', content);
     setLoading(true);
     try {
       // Single fetch request
-      const response = await fetch('http://localhost:3000/api/generate-content', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
-      });
-  
-      // Check if the response is not ok
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-  
-      // Parse response data
-      const data = await response.json();
+      // console.log("promt: ", prompt);
+        // Replace this with your Gemini API logic
+      const response = await getResponseGemini({prompt: `${content} give only description for this..`});
+
+      console.log("res: ", response);
   
       // Update contentItems with the new content
       setContentItems((prevItems) => [
         ...prevItems,
-        { type: 'text', content: data.text, editable: false },
+        {content: response,
+        editable: false ,},
       ]);
+
     } catch (error) {
       console.error('Error fetching content:', error);
     } finally {
       setLoading(false);
     }
   };
-  
-  
-  
-  
 
   // **Define the `handlePhotoClick` function**
   const handlePhotoClick = () => {

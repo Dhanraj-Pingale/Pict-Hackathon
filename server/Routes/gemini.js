@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { correctCodeGemini } from "../Controllers/geminiController.js";
+import { generateContent } from "../Controllers/geminiController.js";
 
 const router = Router();
 
-router.post("/correctCode", correctCodeGemini );
+router.post("/generateContent", generateContent );
 
 export default router;
