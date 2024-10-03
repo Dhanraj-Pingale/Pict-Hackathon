@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FaImage, FaPlus, FaTimes } from 'react-icons/fa';
+import { FaImage, FaPlus, FaTimes, FaHeading, FaLink, FaYoutube } from 'react-icons/fa';
 import DialogBox from './MainComponents/DialogBox';
 import CodeSnippet from './MainComponents/CodeSnippet'; // Import the CodeSnippet component
 import PromptWindow from './MainComponents/PromptWindow';
-import './customScroll.css';
 import {  getResponseGemini } from '../../../Routes/Gemini';
+
+const getYouTubeID = (url) => {
+  const match = url.match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/);
+  return match ? match[1] : null;
+};
 
 const MainContent = () => {
   const [showDialog, setShowDialog] = useState(false); // Manage if the dialog is open or closed
@@ -14,9 +18,8 @@ const MainContent = () => {
   const [isEditingTitle, setIsEditingTitle] = useState(false); // Whether the title is being edited
   const [showPromptWindow, setShowPromptWindow] = useState(false); // Manage PromptWindow visibility
   const [loading, setLoading] = useState(false); // Loading state for buffer animation
-  const [stage, setStage] = useState([]); // List of content added, including AI-generated content
-
-
+  const [contentItems, setContentItems] = useState([])
+  const [imageItems, setImageItems] = useState([]);;// List of content added, including AI-generated content
 
   // Key press listener for "/"
   useEffect(() => {
@@ -46,7 +49,7 @@ const MainContent = () => {
       // Single fetch request
       // console.log("promt: ", prompt);
         // Replace this with your Gemini API logic
-      const response = await getResponseGemini({prompt: `${content} give only description for this..`});
+      const response = await getResponseGemini({prompt: ${content} give only description for this..});
 
       console.log("res: ", response);
   
@@ -64,10 +67,16 @@ const MainContent = () => {
     }
   };
 
-  // **Define the `handlePhotoClick` function**
+  // *Define the handlePhotoClick function*
   const handlePhotoClick = () => {
     document.getElementById('cover-photo-input').click(); // Trigger the file input click to change the photo
   };
+  const handleImageChange = (event) => {
+    const files = Array.from(event.target.files);
+    const imageUrls = files.map((file) => URL.createObjectURL(file));
+    setImageItems((prevImages) => [...prevImages, ...imageUrls]);
+  };
+
 
   // Functions to add content to the main page
   const addText = () => {
@@ -83,6 +92,25 @@ const MainContent = () => {
   const addCodeSnippet = () => {
     setContentItems([...contentItems, { type: 'code', content: '' }]); // Use new CodeSnippet component
     setShowDialog(false); // Close the dialog after adding
+  };
+  const addHeading = () => {
+    setContentItems([...contentItems, { type: 'heading', content: '', editable: true }]);
+    setShowDialog(false);
+  };
+
+  const addImage = () => {
+    setContentItems([...contentItems, { type: 'image', content: '', editable: true }]);
+    setShowDialog(false);
+  };
+
+  const addYouTube = () => {
+    setContentItems([...contentItems, { type: 'youtube', content: '', editable: true }]);
+    setShowDialog(false);
+  };
+
+  const addLink = () => {
+    setContentItems([...contentItems, { type: 'link', content: '', editable: true }]);
+    setShowDialog(false);
   };
 
   // Handle file input change for the cover photo
@@ -110,7 +138,7 @@ const MainContent = () => {
     setIsEditingTitle(true); // Enable editing when the title is clicked
   };
 
-  // Define the `updateContent` function
+  // Define the updateContent function
   const updateContent = (index, newValue) => {
     const updatedContentItems = [...contentItems];
     updatedContentItems[index].content = newValue;
@@ -217,6 +245,50 @@ const MainContent = () => {
                 onDelete={() => deleteContent(index)} // Pass delete function to CodeSnippet component
               />
             )}
+            {item.type === 'heading' && (
+              <input
+                type="text"
+                value={item.content}
+                onChange={(e) => updateContent(index, e.target.value)}
+                onBlur={() => updateContent(index, item.content)}
+                placeholder="Enter heading..."
+                className="bg-transparent text-white text-4xl font-bold border-none outline-none p-0 w-full"
+                autoFocus
+              />
+            )}
+            {item.type === 'image' && (
+              <input
+                type="text"
+                value={item.content}
+                onChange={(e) => updateContent(index, e.target.value)}
+                onBlur={() => updateContent(index, item.content)}
+                placeholder="Paste image URL..."
+                className="bg-transparent text-white border-none outline-none p-0 w-full"
+                autoFocus
+              />
+            )}
+            {item.type === 'youtube' && (
+              <input
+                type="text"
+                value={item.content}
+                onChange={(e) => updateContent(index, e.target.value)}
+                onBlur={() => updateContent(index, item.content)}
+                placeholder="Paste YouTube video URL..."
+                className="bg-transparent text-white border-none outline-none p-0 w-full"
+                autoFocus
+              />
+            )}
+            {item.type === 'link' && (
+              <input
+                type="text"
+                value={item.content}
+                onChange={(e) => updateContent(index, e.target.value)}
+                onBlur={() => updateContent(index, item.content)}
+                placeholder="Paste link URL..."
+                className="bg-transparent text-blue-400 underline border-none outline-none p-0 w-full"
+                autoFocus
+              />
+            )}
           </div>
         ))}
 
@@ -245,6 +317,10 @@ const MainContent = () => {
           addText={addText}
           addVideo={addVideo}
           addCodeSnippet={addCodeSnippet}
+          addHeading={addHeading}
+          addImage={addImage}
+          addYouTube={addYouTube}
+          addLink={addLink}
         />
       )}
     </div>

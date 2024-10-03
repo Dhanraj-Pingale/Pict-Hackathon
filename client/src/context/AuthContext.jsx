@@ -11,6 +11,13 @@ const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true); // Add a loading state
   const [user, setUser] = useState(null); // State to store user info
+  const [codelab, setCodelab] = useState({
+    id: 0,
+    stage: 0,
+    obj: [
+      {type: "", content: ""},
+    ],
+  });
 
   const defaultPic = "images/default-profile-pic.jpg"; // Default pic URL
 
@@ -64,7 +71,7 @@ const setLogout = () => {
 };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, setLogin, setLogout, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, codelab, setCodelab, user, setLogin, setLogout, loading }}>
       {children}
     </AuthContext.Provider>
   );
