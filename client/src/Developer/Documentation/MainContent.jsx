@@ -342,7 +342,7 @@ const MainContent = () => {
                   onChange={(e) => updateContent(index, e.target.value)}
                   onBlur={() => updateContent(index, item.content)}
                   placeholder="Type text here..."
-                  className="bg-transparent text-white border-none outline-none p-0 w-full resize-none overflow-hidden"
+                  className="bg-transparent text-white border-none outline-none p-0 w-full resize-none h-32 overflow-hidden"
                   rows={1} // Initial row height
                   autoFocus
                   onInput={(e) => {
@@ -404,7 +404,7 @@ const MainContent = () => {
                 onChange={(e) => updateContent(index, e.target.value)}
                 onBlur={() => updateContent(index, item.content)}
                 placeholder="Enter heading..."
-                className="bg-transparent text-white text-4xl font-bold border-none outline-none p-0 w-full"
+                className="bg-transparent text-white text-2xl font-bold border-none outline-none p-0 w-full"
                 autoFocus
               />
             )}
