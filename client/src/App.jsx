@@ -17,6 +17,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../Routes/codeEditor/theme";
 import MyCodeLabs from "./Developer/MyCodelabs";
 import DocumentationPage from "./Developer/Documentation/DocumentationPage";
+import CodelabPreview from "./pages/CodelabPreview.jsx";
 
 
 const router = createBrowserRouter(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
         <Route index element={<ProtectedRoute child={<HomePage />} />} />
         <Route path="documentation" element={<DocumentationPage/>} />
         <Route path="mycodelabs" element={<MyCodeLabs/>} />
+        <Route path="codelabs/:id" element={<CodelabPreview />} />
 
         <Route path="errorAnalyser" element={<ProtectedRoute child={<ErrorAnalyser />} />} />
         <Route path="codeSummarizer" element={<ProtectedRoute child={<CodeSummarizer />} />} />

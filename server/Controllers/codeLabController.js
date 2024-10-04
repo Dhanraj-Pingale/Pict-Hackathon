@@ -101,12 +101,14 @@ export const getCodelabById = async (req, res) => {
   try {
     const db = getDb();
     const codelab = await db.collection('codelabs').findOne({ _id: new ObjectId(id) });
+const codelabArray = codelab ? [codelab] : [];
+
 
     if (!codelab) {
       return res.status(404).json({ message: 'Codelab not found' });
     }
 
-    res.status(200).json(codelab);
+    res.status(200).json(codelabArray);
   } catch (error) {
     console.error(`Error retrieving codelab with ID: ${id}`, error);
     res.status(500).json(null);

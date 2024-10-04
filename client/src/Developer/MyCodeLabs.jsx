@@ -141,7 +141,7 @@ export default function MyCodeLabs() {
                   {codelab.stages[0]?.contentItems[0]?.content || 'No description available'}
                 </p>
                 <button
-                  onClick={() => navigate(`/codelabs/${codelab._id}`)} // Button to open the codelab
+                  onClick={() => navigate(`/developer/codelabs/${codelab._id}`)} // Button to open the codelab
                   className="bg-customGreen text-black py-2 px-4 rounded hover:bg-opacity-90"
                 >
                   Open Codelab

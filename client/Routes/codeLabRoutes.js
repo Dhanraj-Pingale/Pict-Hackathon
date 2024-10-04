@@ -46,3 +46,19 @@ export const fetchCodelabs = async () => {
         return {status: false, message: "Error in fetchCodelabs "};
     }
 }
+
+export const fetchCodelabFn = async (codelabId) => {
+    // create a new codelab... 
+    try {
+        const res = await axios.get(`${API_URL}/${ codelabId }`);
+    
+        console.log("res fetchCodelabFn : ", res.data);
+
+        return res.data;
+        
+    } catch (error) {
+        console.log("error in fetchCodelabs: ", error);
+        return {status: false, message: "Error in fetchCodelabs "};
+    }
+}
+
