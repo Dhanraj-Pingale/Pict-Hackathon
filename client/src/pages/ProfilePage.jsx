@@ -26,15 +26,21 @@ export default function ProfilePage() {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center text-white p-6">
       <div className="max-w-md w-full bg-gray-800 p-6 rounded-lg shadow-md">
-        <div className="flex items-center justify-center mb-6">
-          <img
-            className="h-24 w-24 rounded-full object-cover"
-            src={user?.pic || "images/default-profile-pic.jpg"} // Display user's profile picture
-            alt="Profile"
-          />
+        <h2 className="text-3xl font-semibold text-center mb-2">
+          {user?.username || "Anonymous User"}
+        </h2>
+        <p className="text-center text-gray-400 mb-6">
+          {user?.email || "No email available"}
+        </p>
+
+        <div className="border-t border-gray-700 mt-6 pt-6">
+          <h3 className="text-xl font-semibold text-center mb-2">About Our Website</h3>
+          <p className="text-center text-gray-400">
+            Welcome to our platform! We aim to provide the best user experience
+            for managing your Documentation, interacting with various features, and exploring
+            insightful content. Stay tuned for more updates!
+          </p>
         </div>
-        <h2 className="text-3xl font-semibold text-center">{user?.username || "Anonymous"}</h2>
-        <p className="text-center text-gray-400">{user?.email}</p>
 
         <div className="mt-6">
           <button

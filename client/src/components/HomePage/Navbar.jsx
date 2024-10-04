@@ -34,8 +34,8 @@ const Navbar = () => {
 
         {/* Profile Icon */}
         <NavLink to="profile" > 
-        <button className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center">
-          A
+        <button className="w-8 h-8 text-sm  rounded-full bg-purple-600 text-white flex items-center justify-center">
+          User
         </button>
         </NavLink>
       </div>
