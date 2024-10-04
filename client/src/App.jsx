@@ -11,7 +11,8 @@ import DocumentationPage from "./Developer/Documentation/DocumenationPage";
 import ErrorAnalyser from "./Developer/ErrorAnalyser";
 import CodeSummarizer from "./Developer/CodeSummarizer";
 import HomePage from "./pages/Homepage";
-import CodeVisualizer from "./pages/CodeVisualizer";
+import CodeVisualizer from "./Developer/CodeVisualizer";
+import MyCodeLabs from "./Developer/MyCodeLabs";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
 
         <Route index element={<ProtectedRoute child={<HomePage />} />} />
         <Route path="documentation" element={<DocumentationPage/>} />
+        <Route path="mycodelabs" element={<MyCodeLabs/>} />
         <Route path="errorAnalyser" element={<ProtectedRoute child={<ErrorAnalyser />} />} />
         <Route path="codeSummarizer" element={<ProtectedRoute child={<CodeSummarizer />} />} />
         <Route path="codeVisualizer" element={<ProtectedRoute child={<CodeVisualizer />} />} />

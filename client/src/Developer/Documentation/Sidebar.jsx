@@ -25,12 +25,7 @@ const Sidebar = () => {
         <li className="text-lg flex items-center transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
           <FaUndoAlt className="mr-3" size={18} /> Version Controls
         </li>
-        <li className="text-lg flex items-center transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
-          <FaCode className="mr-3" size={18} /> Code Visualizer
-        </li>
-        <li className="text-lg flex items-center transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
-          <FaChartBar className="mr-3" size={18} /> Code Summarizer
-        </li>
+        
       </ul>
 
       {/* Bottom section: Back to Home */}

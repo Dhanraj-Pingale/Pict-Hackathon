@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTimes, FaTextHeight, FaVideo, FaCodeBranch, FaClipboardList, FaCode, FaStar, FaChartBar } from 'react-icons/fa';
+import { FaTimes, FaTextHeight, FaVideo, FaCodeBranch, FaClipboardList, FaCode, FaStar, FaChartBar, FaImage, FaLink, FaHeading } from 'react-icons/fa';
 
 const DialogBox = ({ showDialog, setShowDialog, activeTab, setActiveTab, addText, addVideo, addCodeSnippet }) => {
   if (!showDialog) return null; // Return null if the dialog should not be displayed
@@ -23,10 +23,10 @@ const DialogBox = ({ showDialog, setShowDialog, activeTab, setActiveTab, addText
           Basic
         </button>
         <button
-          className={`px-4 py-1 rounded-full ${activeTab === 'AI' ? 'bg-white text-black' : 'bg-transparent text-gray-300'}`}
-          onClick={() => setActiveTab('AI')}
+          className={`px-4 py-1 rounded-full ${activeTab === 'Advanced' ? 'bg-white text-black' : 'bg-transparent text-gray-300'}`}
+          onClick={() => setActiveTab('Advanced')}
         >
-          AI
+          Advanced
         </button>
       </div>
 
@@ -36,43 +36,49 @@ const DialogBox = ({ showDialog, setShowDialog, activeTab, setActiveTab, addText
         {activeTab === 'Basic' && (
           <>
             <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addText}>
+              <FaHeading className="text-gray-400" />
+              <span>Add Heading 1</span>
+            </li>
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addText}>
+              <FaHeading className="text-gray-400" />
+              <span>Add Heading 2</span>
+            </li>
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addText}>
               <FaTextHeight className="text-gray-400" />
               <span>Add Text</span>
+            </li>
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addText}>
+              <FaImage className="text-gray-400" />
+              <span>Add Image</span>
             </li>
             <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addVideo}>
               <FaVideo className="text-gray-400" />
               <span>Add Video</span>
             </li>
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addVideo}>
+              <FaLink className="text-gray-400" />
+              <span>Add Link</span>
+            </li>
             <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addCodeSnippet}>
               <FaCodeBranch className="text-gray-400" />
               <span>Insert Code Snippet</span>
             </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded" onClick={addCodeSnippet}>
-            <FaCode className="text-gray-400" />
-              <span>Live Code Editor</span>
-            </li>
+            
           </>
         )}
 
         {/* AI Tab */}
-        {activeTab === 'AI' && (
+        {activeTab === 'Advanced' && (
           <>
             <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded">
               <FaClipboardList className="text-gray-400" />
-              <span>Generate Documentation Outline</span>
+              <span>Live Code Editor</span>
             </li>
             <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded">
               <FaStar className="text-gray-400" />
-              <span>Summarize Documentation</span>
+              <span>Embed Website</span>
             </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded">
-              <FaCode className="text-gray-400" />
-              <span>Generate Code</span>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded">
-              <FaChartBar className="text-gray-400" />
-              <span>Generate Personalized Quiz</span>
-            </li>
+            
           </>
         )}
       </ul>

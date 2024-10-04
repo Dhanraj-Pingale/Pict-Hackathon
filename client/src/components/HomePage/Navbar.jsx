@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,7 +19,9 @@ const Navbar = () => {
       <ul className="hidden md:flex space-x-16">
         <li className="hover:text-white cursor-pointer">Home</li>
         <li className="hover:text-white cursor-pointer">All CodeLabs</li>
-        <li className="hover:text-white cursor-pointer">My CodeLabs</li>
+        <li className="hover:text-white cursor-pointer">
+          <Link to="/developer/mycodelabs" className="hover:text-white">My CodeLabs</Link>
+        </li>
         <li className="hover:text-white cursor-pointer">Community</li>
       </ul>
 
