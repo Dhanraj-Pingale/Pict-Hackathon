@@ -35,7 +35,7 @@ Each tutorial/documentation step includes the following elements:
 
 ## 📑Documentation Generator
 
-<img width="1280" alt="Screenshot 2024-10-04 at 4 28 41 PM" src="https://github.com/user-attachments/assets/86e0c2db-6261-4e69-9e29-b88c7d1965c5">
+<img width="1280" alt="Screenshot 2024-10-04 at 4 52 44 PM" src="https://github.com/user-attachments/assets/12d5cd0e-177b-424e-9de1-a543e4c45ece">
 
 ## 📑All CODELABS
 
