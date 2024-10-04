@@ -15,9 +15,9 @@ import ProfilePage from "./pages/ProfilePage";
 import CodeEditor from "./Developer/CodeEditor";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../Routes/codeEditor/theme";
-import DocumentationPage from "./Developer/DocumentationPage";
-import MyCodeLabs from "./components/Documentation/MyCodeLabs";
-import CodeLab from "./components/Documentation/CodeLab";
+import MyCodeLabs from "./Developer/MyCodelabs";
+import DocumentationPage from "./Developer/Documentation/DocumentationPage";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,12 +31,9 @@ const router = createBrowserRouter(
       <Route path="developer" element={<DeveloperLayout />}>
 
         <Route index element={<ProtectedRoute child={<HomePage />} />} />
-        <Route path="documentation" element={<DocumentationPage />} >
-          <Route index element={<ProtectedRoute child={<MyCodeLabs />} />} />
-          <Route path="/edit" element={<ProtectedRoute child={<CodeLab />} />} />
-          <Route path="genAI" element={<ProtectedRoute child={<div>gen ai page</div>} />} />
+        <Route path="documentation" element={<DocumentationPage/>} />
+        <Route path="mycodelabs" element={<MyCodeLabs/>} />
 
-        </Route>
         <Route path="errorAnalyser" element={<ProtectedRoute child={<ErrorAnalyser />} />} />
         <Route path="codeSummarizer" element={<ProtectedRoute child={<CodeSummarizer />} />} />
         <Route path="codeVisualizer" element={<ProtectedRoute child={<CodeVisualizer />} />} />

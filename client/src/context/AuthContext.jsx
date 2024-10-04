@@ -14,8 +14,10 @@ const AuthProvider = ({ children }) => {
   const [codelab, setCodelab] = useState({
     id: 0,
     stage: 0,
-    obj: [
-      {type: "", content: ""},
+    stages: [
+      [
+      { type: "", content: "" },
+    ]
     ],
   });
 
@@ -23,52 +25,54 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const verifyAuth = async () => {
-        try {
-            const res = await checkAuth();
-            
-            // Save user data if authenticated
-            if (res.data.isAuthenticated) {
-                setIsAuthenticated(true);
-                setUser({
-                    username: res.data.username,
-                    email: res.data.email,
-                    pic: res.data.pic || defaultPic // Use default if pic is not provided
-                });
-            } else {
-                setUser(null); // Clear user data if not authenticated
-            }
-        } catch (error) {
-            console.error("Failed to verify authentication:", error);
-            setIsAuthenticated(false);
-            setUser(null); // Clear user data on failure
-        } finally {
-            setLoading(false); // Mark loading as complete after check
+
+      setLoading(true);
+      try {
+        const res = await checkAuth();
+
+        // Save user data if authenticated
+        if (res.data.isAuthenticated) {
+          setIsAuthenticated(true);
+          setUser({
+            username: res.data.username,
+            email: res.data.email,
+            pic: res.data.pic || defaultPic // Use default if pic is not provided
+          });
+        } else {
+          setUser(null); // Clear user data if not authenticated
         }
+      } catch (error) {
+        console.error("Failed to verify authentication:", error);
+        setIsAuthenticated(false);
+        setUser(null); // Clear user data on failure
+      } finally {
+        setLoading(false); // Mark loading as complete after check
+      }
     };
 
     verifyAuth(); // Call the async function
-}, []);
+  }, []);
 
-const setLogin = (userData) => {
+  const setLogin = (userData) => {
     console.log("setlogin: ", userData);
     const modifiedData = {
-        username: userData.username,
-        email: userData.email,
-        //add pic here ... 
+      username: userData.username,
+      email: userData.email,
+      //add pic here ... 
     }
     console.log("modified data: ", modifiedData);
     setIsAuthenticated(true);
     setUser({
-        ...modifiedData,
-        pic: modifiedData.pic || defaultPic // Use default pic on login if not provided
-    });  
-};
+      ...modifiedData,
+      pic: modifiedData.pic || defaultPic // Use default pic on login if not provided
+    });
+  };
 
-const setLogout = () => {
+  const setLogout = () => {
     logout();
     setIsAuthenticated(false);
     setUser(null); // Clear user data on logout
-};
+  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, codelab, setCodelab, user, setLogin, setLogout, loading }}>

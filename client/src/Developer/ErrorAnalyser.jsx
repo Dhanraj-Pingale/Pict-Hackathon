@@ -9,12 +9,13 @@ export default function ErrorAnalyser() {
   const handleCodeAnalysis = async () => {
     try {
       // Replace this with your Gemini API logic
-      const response = await getResponseGemini({prompt: `${codeInput} Analyse the errors in above code, and only give me the corrected code with comments, without any other description`});
+      const response = await getResponseGemini({
+        prompt: `${codeInput} Analyse the errors in the above code, and only give me the corrected code with comments, without any other description`,
+      });
 
       console.log("res: ", response);
 
       setCorrectedCode(response);
-
     } catch (error) {
       console.error('Error analyzing code:', error);
       setCorrectedCode('Error in analyzing code');
@@ -22,29 +23,28 @@ export default function ErrorAnalyser() {
   };
 
   return (
-    <div className="h-screen grid grid-cols-2 gap-4 p-8">
+    <div className="h-screen grid grid-cols-2 gap-4 p-8 bg-gray-900 text-white">
       {/* Input Section */}
-      <div className="flex flex-col bg-gray-100 p-4 rounded-lg shadow-lg">
+      <div className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg">
         <textarea
           value={codeInput}
           onChange={(e) => setCodeInput(e.target.value)}
           placeholder="Enter your code here..."
-          className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="flex-1 p-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           rows="15"
         />
         <button
           onClick={handleCodeAnalysis}
-          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all">
+          className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-all">
           Check Code
         </button>
       </div>
 
       {/* Output Section */}
-      <div className="flex flex-col bg-white p-4 rounded-lg shadow-lg">
+      <div className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg">
         <h2 className="text-lg font-semibold mb-2">Corrected Code</h2>
         <pre className="flex-1 bg-gray-900 text-white p-4 rounded-md overflow-auto">
-          {/* {correctedCode || 'Corrected code will appear here...'} */}
-          <CodeBlock code={correctedCode}/>
+          <CodeBlock code={correctedCode || 'Corrected code will appear here...'} />
         </pre>
       </div>
     </div>

@@ -1,42 +1,51 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
-    <nav className={`flex justify-between items-center py-3 px-9 bg-customDark text-gray-300 sticky top-0 z-50 pt-4 pb-4`}>
+    <nav
+      className={`flex justify-between items-center py-3 px-9 bg-customDark text-gray-300 sticky top-0 z-50 pt-4 pb-4`}
+    >
       {/* Logo Section */}
-      <div className="text-xl font-bold text-white">
-        {`{ CodeLabX }`}
-      </div>
+      <div className="text-xl font-bold text-white"> {`{ CodeLabX }`}</div>
 
       {/* Menu Items */}
       <ul className="hidden md:flex space-x-16">
-        <li className="hover:text-white cursor-pointer">Home</li>
-        <li className="hover:text-white cursor-pointer">All CodeLabs</li>
-        <li className="hover:text-white cursor-pointer">My CodeLabs</li>
-        <li className="hover:text-white cursor-pointer">Community</li>
+        <li>
+          <NavLink to="/" className="hover:text-white cursor-pointer">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="#"
+            className="hover:text-white cursor-pointer"
+          >
+            All CodeLabs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/developer/mycodelabs"
+            className="hover:text-white cursor-pointer"
+          >
+            My CodeLabs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/developer/codeEditor" className="hover:text-white cursor-pointer">
+            CodeEditor
+          </NavLink>
+        </li>
       </ul>
 
       {/* Icons Section */}
       <div className="flex items-center space-x-4">
-        {/* Dark Mode Toggle Button */}
-        <button 
-          onClick={toggleDarkMode} 
-          className="focus:outline-none hover:text-white">
-          {isDarkMode ? '☀️' : '🌙'}
-        </button>
-
         {/* Profile Icon */}
-        <NavLink to="profile" > 
-        <button className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center">
-          A
-        </button>
+        <NavLink to="/profile">
+          <button className="w-8 h-8 text-lg rounded-full bg-transparent border border-white text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-white hover:text-black">
+            ⚙️
+          </button>
         </NavLink>
       </div>
     </nav>

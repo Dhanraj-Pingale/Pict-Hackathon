@@ -1,6 +1,5 @@
 import React from 'react';
 import HomePageCard from '../components/HomePage/HomePageCard';
-import Footer from '../components/HomePage/Footer';
 import SpericalDesigns from '../components/HomePage/SpericalDesigns';
 import Navbar from '../components/HomePage/Navbar';
 
@@ -9,24 +8,44 @@ const HomePage = () => {
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-customDarker text-white p-8 relative flex items-center justify-center overflow-hidden">
+      <div className="min-h-screen h-screen bg-gray-900 text-white px-8 py-0 pb-12 relative flex flex-col items-center justify-center overflow-hidden">
         
         {/* Spherical Designs */}
         <SpericalDesigns />
 
-        {/* Grid of Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Documentation Generator */}
-          
-          <HomePageCard title='Documentation Generator' emoji='📄' path="/developer/documentation" />
-          <HomePageCard title='Code Visualizer' emoji='🧑‍💻' path="/developer/codeVisualizer" />
-          <HomePageCard title='Error Analyser' emoji='❌' path="/developer/errorAnalyser" />
-          <HomePageCard title='Code Summarizer' emoji='🧊' path="/developer/codeSummarizer" />
-          <HomePageCard title='Code Editor' emoji='🧊' path="/developer/codeEditor" />
+        {/* Header Section */}
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-8 z-10">
+          Welcome to Your Developer Hub
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-400 mb-8 text-center z-10 max-w-2xl">
+          Tools to simplify your development process, from generating documentation to analyzing code errors and more.
+        </p>
 
+        {/* Grid of Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 z-10 w-full max-w-4xl">
+          {/* Documentation Generator */}
+          <HomePageCard 
+            title='Documentation Generator' 
+            emoji='📄' 
+            path="/developer/documentation" 
+          />
+          <HomePageCard 
+            title='Code Visualizer' 
+            emoji='🧑‍💻' 
+            path="/developer/codeVisualizer" 
+          />
+          <HomePageCard 
+            title='Error Analyser' 
+            emoji='❌' 
+            path="/developer/errorAnalyser" 
+          />
+          <HomePageCard 
+            title='Code Summarizer' 
+            emoji='🧊' 
+            path="/developer/codeSummarizer" 
+          />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

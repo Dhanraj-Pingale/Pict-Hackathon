@@ -56,52 +56,55 @@ const CodeVisualizer = () => {
   };
 
   return (
-    <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} h-screen`}>
-      <div className="flex justify-between items-center p-4">
-        <h2 className="text-lg font-bold">React Code Visualizer</h2>
-        <button
-          onClick={toggleTheme}
-          className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
-        >
-          {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-        </button>
+    <>
+      {/* <Navbar /> */}
+      <div className={`${darkMode ? 'bg-customDark text-white' : 'bg-gray-100 text-customDark'} min-h-screen max-h-screen`}>
+        <div className="flex justify-between items-center p-4">
+          {/* <button
+            onClick={toggleTheme}
+            className="bg-customGreen hover:bg-customGreenHover text-white py-2 px-4 rounded flex items-center"
+          >
+            {darkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
+          </button> */}
+        </div>
+
+        <Split className="split flex max-h-screen" minSize={200} gutterSize={10}>
+          {/* Editor Panel */}
+          <div className={`w-1/2 p-4 max-h-screen rounded-xl ml-3 ${darkMode ? 'bg-customDarker' : 'bg-gray-200'}`}>
+            <h2 className="text-md mb-2 font-bold flex justify-between items-center">
+              <span>Editor - Enter your React code here</span>
+              <button
+                onClick={renderCode}
+                className="bg-customGreen hover:bg-customGreenHover text-white py-2 px-4 rounded-xl"
+              >
+                Render
+              </button>
+            </h2>
+
+            <pre className={`language-js text-xs p-2 rounded-lg mr-7 mt-2 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+              <code>{fixedCodeStart}</code>
+              <textarea
+                className={`w-full min-h-96 ${darkMode ? 'text-white bg-transparent' : 'text-black bg-transparent'} border-none focus:outline-none resize-none`}
+                value={userCode}
+                onChange={(e) => setUserCode(e.target.value)}
+              />
+              <code>{fixedCodeEnd}</code>
+            </pre>
+          </div>
+
+          {/* Preview Panel */}
+          <div className={`w-1/2 p-4 rounded-xl mr-3 ${darkMode ? 'bg-customDarker text-white' : 'bg-white text-customDarker'}`} id="preview">
+            <h2 className="text-lg mb-2 font-bold">Preview</h2>
+            {/* Rendered component will appear here */}
+          </div>
+        </Split>
       </div>
-
-      <Split className="split flex" minSize={200} gutterSize={10}>
-        {/* Editor Panel */}
-        <div className={`w-1/2 p-4 ${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
-          <h2 className="text-lg mb-2 font-bold flex justify-between items-center">
-            <span>Editor - Enter your react code here</span>
-            <button
-              onClick={renderCode}
-              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
-            >
-              Render
-            </button>
-          </h2>
-
-          <pre className={`language-js text-xs p-2 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
-            <code>{fixedCodeStart}</code>
-            <textarea
-              className={`w-full h-72 ${darkMode ? 'text-white bg-transparent' : 'text-black bg-transparent'} border-none focus:outline-none resize-none`}
-              value={userCode}
-              onChange={(e) => setUserCode(e.target.value)}
-            />
-            <code>{fixedCodeEnd}</code>
-          </pre>
-        </div>
-
-        {/* Preview Panel */}
-        <div className={`w-1/2 p-4 ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'}`} id="preview">
-          <h2 className="text-lg mb-2 font-bold">Preview</h2>
-          {/* Rendered component will appear here */}
-        </div>
-      </Split>
-    </div>
+    </>
   );
 };
 
 export default CodeVisualizer;
+
 
 
 {/* <h1 className="text-3xl font-bold">Welcome to React!</h1>

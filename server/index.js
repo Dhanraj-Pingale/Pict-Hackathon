@@ -4,10 +4,11 @@ import dotenv from "dotenv";
 import passport from "passport";
 import session from "express-session";
 import authRoutes from "./Routes/authRoutes.js";
-import dbRoutes from "./Routes/dbRoutes.js";
+// import dbRoutes from "./Routes/dbRoutes.js";
 import geminiRoutes from "./Routes/gemini.js";
 import MongoStore from "connect-mongo";
 import getDb from "./models/db.js";
+import codeLabRoutes from "./Routes/codeLabRoutes.js";
 
 dotenv.config();
 
@@ -51,11 +52,13 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 
 // for database handling... 
-app.use("/db", dbRoutes);
+// app.use("/db", dbRoutes);
 
 //for gemini handling...
 app.use("/gemini", geminiRoutes);
 
+// for handling related to codelabs
+app.use("/codelabs", codeLabRoutes);
 
 // Start the server and connect to MongoDB
 app.listen(PORT, async () => {
