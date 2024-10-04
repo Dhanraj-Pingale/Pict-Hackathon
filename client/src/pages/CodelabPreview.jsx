@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import { FaImage, FaHeading, FaLink, FaYoutube } from 'react-icons/fa'; 
-import axios from 'axios'; 
 import CodeSnippet from '../Developer/Documentation/MainComponents/CodeSnippet';
 import { fetchCodelabFn } from '../../Routes/codeLabRoutes';
 
@@ -16,8 +14,8 @@ const CodelabPreview = () => {
             try {
                 const response = await fetchCodelabFn(codelabId); 
                 console.log("res:", response);
-                setCodelabData(response); 
-                console.log("res: codelabpreview: ", codelabData[0]);
+                setCodelabData(response[0]); 
+                console.log("res: codelabpreview: ", response[0]);
             } catch (error) {
                 console.error('Error fetching codelab:', error);
             }

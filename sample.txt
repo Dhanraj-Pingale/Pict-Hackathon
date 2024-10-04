@@ -6,3 +6,16 @@
 >
   Click Me
 </button>
+
+
+************ code ***********
+
+
+# Example of a nested for loop
+def nested_loops(n):
+    for i in range(n):
+        for j in range(n):
+            print(f"i: {i}, j: {j}")
+
+# Calling the function
+nested_loops(5)
